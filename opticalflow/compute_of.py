@@ -8,6 +8,7 @@ import torch
 import math
 import numpy
 import os
+import os.path as osp
 import argparse
 
 ######### Parameters #########
@@ -167,12 +168,21 @@ parser.add_argument('--outdir', type=str, required=False,
                     default='/home/GAIT_local/TUM_GAID_of/',
                     help="Full path for output files.")
 
+parser.add_argument('--fpatt', type=str, required=False,
+                    default='*.avi',
+                    help="Video file pattern.")
+
 args = parser.parse_args()
 
 videosdir = args.videodir
 outdir = args.outdir
+fpatt = args.fpatt
 
-videos = glob.glob(os.path.join(videosdir, '*.avi'))
+if not os.path.exists(outdir):
+	os.makedirs(outdir)
+
+videos = glob.glob(os.path.join(videosdir, fpatt))
+print("* Found {} videos.".format(len(videos)))
 for file in videos:
 	previous_frame = None
 	of_video = []
@@ -192,7 +202,10 @@ for file in videos:
 			break
 	cap.release()
 	outname = os.path.splitext(os.path.split(file)[1])[0]
-	numpy.savez_compressed(outdir + '/' + outname + '.npz', of=of_video)
+	outfilename = osp.join(outdir,  outname + '.npz')
+	numpy.savez_compressed(outfilename, of=of_video)
 	# For reading.
 	# of = numpy.load(OUTPUT_DIR + outname + '.npz')['of']
 	# of = of / 100.0
+
+print("Done!")
