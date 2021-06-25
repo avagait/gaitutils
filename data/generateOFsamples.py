@@ -8,6 +8,7 @@ import numpy as np
 import pickle
 import argparse
 import os
+import os.path as osp
 import deepdish as dd
 
 # Prepare input
@@ -78,9 +79,9 @@ meanSample = 0
 samplename = 'avamvg_m_tr01_cam03_clip'
 id = 1  # Let's assume that this is the subject with ID 1
 # of_file = os.path.join(ofdir, subject_pattern.format(id) + pattern + '.npz')
-of_file = '/home/mjmarin/tmp/gaitutils/of/avamvg_m_tr01_cam03_clip.npz'
+of_file = osp.join(ofdir, samplename+'.npz')
 # track_file = os.path.join(trackdir, subject_pattern.format(id) + pattern + '.pkl')
-track_file = '/home/mjmarin/tmp/gaitutils/tracks/avamvg_m_tr01_cam03_clip.pkl'
+track_file = osp.join(trackdir, samplename+'.pkl')
 
 if os.path.exists(of_file) and os.path.exists(track_file):
     # Load files.
