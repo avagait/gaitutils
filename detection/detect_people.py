@@ -1,3 +1,8 @@
+##########################################
+# TODO: AUTHORSHIP
+# This code is part of GaitUtils
+##########################################
+
 import tensorflow as tf
 import numpy as np
 import cv2

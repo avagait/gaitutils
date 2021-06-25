@@ -1,5 +1,6 @@
 ##########################################
 # TODO: AUTHORSHIP
+# This code is part of GaitUtils
 ##########################################
 
 import glob
