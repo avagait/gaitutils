@@ -1,7 +1,15 @@
-##########################################
-# TODO: AUTHORSHIP
-# This code is part of GaitUtils
-##########################################
+###################################################################################
+# This file is part of GaitUtils.
+# This code is offered without any warranty or support for only research purposes.
+#
+# If you either use this code or find useful this repository, please, cite any of the following related works:
+# [A] Francisco M. Castro, Manuel J. Marín-Jiménez, Nicolás Guil, Santiago Lopez Tapia, Nicolas Pérez de la Blanca:
+#     Evaluation of Cnn Architectures for Gait Recognition Based on Optical Flow Maps. BIOSIG 2017: 251-258
+# [B] Rubén Delgado-Escaño, Francisco M. Castro, Julián Ramos Cózar, Manuel J. Marín-Jiménez, Nicolás Guil:
+#     MuPeG - The Multiple Person Gait Framework. Sensors 20(5): 1358 (2020)
+# [C] Francisco M. Castro, Manuel J. Marín-Jiménez, Nicolás Guil, Nicolás Pérez de la Blanca:
+#     Multimodal feature fusion for CNN-based gait recognition: an empirical comparison. Neural Comput. Appl. 32(17): 14173-14193 (2020)
+###################################################################################
 
 import cv2
 import numpy as np
@@ -39,6 +47,10 @@ parser.add_argument('--nframes', type=int, required=False,
                     default=25,
                     help="Number of frames to be stacked")
 
+parser.add_argument('--vname', type=str, required=True,
+                    default='avamvg_m_tr01_cam03_clip',
+                    help="Name of the original video file WITHOUT extension")
+
 parser.add_argument('--step', type=int, required=False,
                     default=5,
                     help="Step size in number of frames")
@@ -62,6 +74,7 @@ n_frames = args.nframes
 step = args.step
 perc = args.val_perc
 ids_file_path = args.ids_file_path
+samplename = args.vname
 
 if not os.path.exists(outdir):
     os.makedirs(outdir)
@@ -76,7 +89,6 @@ x_scale = 80 / im_width
 y_scale = 60 / im_height
 meanSample = 0
 
-samplename = 'avamvg_m_tr01_cam03_clip'
 id = 1  # Let's assume that this is the subject with ID 1
 # of_file = os.path.join(ofdir, subject_pattern.format(id) + pattern + '.npz')
 of_file = osp.join(ofdir, samplename+'.npz')

@@ -1,7 +1,15 @@
-##########################################
-# TODO: AUTHORSHIP
-# This code is part of GaitUtils
-##########################################
+###################################################################################
+# This file is part of GaitUtils.
+# This code is offered without any warranty or support for only research purposes.
+#
+# If you either use this code or find useful this repository, please, cite any of the following related works:
+# [A] Francisco M. Castro, Manuel J. Marín-Jiménez, Nicolás Guil, Santiago Lopez Tapia, Nicolas Pérez de la Blanca:
+#     Evaluation of Cnn Architectures for Gait Recognition Based on Optical Flow Maps. BIOSIG 2017: 251-258
+# [B] Rubén Delgado-Escaño, Francisco M. Castro, Julián Ramos Cózar, Manuel J. Marín-Jiménez, Nicolás Guil:
+#     MuPeG - The Multiple Person Gait Framework. Sensors 20(5): 1358 (2020)
+# [C] Francisco M. Castro, Manuel J. Marín-Jiménez, Nicolás Guil, Nicolás Pérez de la Blanca:
+#     Multimodal feature fusion for CNN-based gait recognition: an empirical comparison. Neural Comput. Appl. 32(17): 14173-14193 (2020)
+###################################################################################
 
 import glob
 import os
